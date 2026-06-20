@@ -20,32 +20,8 @@ export const Beranda: React.FC = () => {
       transition={{ staggerChildren: 0.2, delayChildren: 0.1 }}
       className="w-full min-h-screen relative overflow-hidden flex flex-col items-center pb-20 bg-gradient-to-br from-[#8b1515] via-[#4d1313] to-[#1c1818]"
     >
-      {/* Transparent Navbar inside the Hero */}
-      <nav className="w-full px-6 md:px-16 py-6 flex items-center justify-between z-50 mb-10 md:mb-20">
-        <div className="flex items-center gap-3">
-          {/* Logo 81 */}
-          <div className="w-10 h-10 bg-[#cc3333] rounded-full flex items-center justify-center text-white font-black text-lg">
-            81
-          </div>
-          <div className="flex items-center gap-1.5 text-[17px] font-black uppercase tracking-wide">
-            <span className="text-white">HUT RI 81</span>
-            <span className="text-[#cc3333]">RT 10</span>
-          </div>
-        </div>
-        
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8 text-[13px] font-bold text-gray-300">
-          <a href="#beranda" className="text-white">Beranda</a>
-          <a href="#tentang" className="hover:text-white transition-colors">Tentang</a>
-          <a href="#lomba" className="hover:text-white transition-colors">Lomba</a>
-          <a href="#jadwal" className="hover:text-white transition-colors">Jadwal</a>
-          <a href="#struktur" className="hover:text-white transition-colors">Panitia</a>
-          <a href="#anggaran" className="hover:text-white transition-colors">Anggaran</a>
-        </div>
-      </nav>
-
       {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl px-6 flex flex-col items-center flex-1 justify-center">
+      <div className="relative z-10 w-full max-w-6xl px-6 flex flex-col items-center flex-1 justify-center mt-20">
         
         {/* Theme Text */}
         <motion.h1 

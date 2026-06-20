@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Navbar } from './components/Navbar';
 import { Beranda } from './components/Beranda';
 import { Tentang } from './components/Tentang';
 import { StrukturPanitia } from './components/StrukturPanitia';
@@ -11,6 +12,9 @@ const App: React.FC = () => {
   return (
     <div className="w-full min-h-screen font-sans text-gray-800 flex flex-col relative overflow-hidden bg-white">
       
+      {/* Global Sticky Navbar */}
+      <Navbar />
+
       {/* Animated Background Blobs */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <motion.div 
