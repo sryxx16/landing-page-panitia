@@ -1,0 +1,38 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# agentic-senior-core: local backup artifacts
+.agentic-backup/
+
+# agentic-senior-core: local runtime artifacts
+.agent-context/state/token-saver/
+.agent-context/state/token-optimization-report.json
+
+# agentic-senior-core: local-only governance files
+.agent-context/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+mcp.json
