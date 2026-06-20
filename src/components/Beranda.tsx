@@ -73,6 +73,34 @@ export const Beranda: React.FC = () => {
           </div>
         </motion.div>
         
+        {/* Call to Action Buttons */}
+        <motion.div 
+          variants={itemVariants}
+          className="flex flex-col md:flex-row items-center gap-4 mt-8"
+        >
+          {/* WhatsApp Button */}
+          <a 
+            href="https://wa.me/6285781278856?text=Halo%20panitia%20HUT%20RI%2081%20RT%2010,%20saya%20tertarik%20menjadi%20sponsor." 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-white text-[#cc3333] font-black px-8 py-3.5 rounded-full text-[13px] md:text-sm shadow-[0_8px_25px_rgba(255,255,255,0.1)] hover:scale-105 transition-transform"
+          >
+            Tertarik Jadi Sponsor? Hubungi Kami
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+
+          {/* Jadwal Button */}
+          <a 
+            href="#jadwal"
+            className="flex items-center gap-2 bg-transparent text-white font-bold px-8 py-3.5 rounded-full text-[13px] md:text-sm border border-white/30 hover:bg-white/10 transition-colors"
+          >
+            Lihat Jadwal
+          </a>
+        </motion.div>
+
       </div>
     </motion.section>
   );

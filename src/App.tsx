@@ -37,6 +37,13 @@ const App: React.FC = () => {
         <Lomba />
         <Jadwal />
         <Anggaran />
+
+        {/* Footer */}
+        <footer className="w-full bg-[#1c1818] py-8 border-t border-gray-800 flex items-center justify-center relative z-20">
+          <p className="text-sm font-medium text-gray-400">
+            Dibuat dengan ❤️ oleh <span className="text-white font-bold">Surya</span>
+          </p>
+        </footer>
       </div>
     </div>
   );
