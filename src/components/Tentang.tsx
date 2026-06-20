@@ -1,17 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Target, Users, Heart, Medal } from 'lucide-react';
 
-const ProfileCard: React.FC<{ name: string; role: string; imgUrl: string }> = ({ name, role, imgUrl }) => (
+const TujuanItem: React.FC<{ title: string; desc: string; icon: React.ReactNode }> = ({ title, desc, icon }) => (
   <motion.div 
-    whileHover={{ y: -5, scale: 1.05 }}
-    className="bg-white/80 backdrop-blur-sm rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-white p-2 flex flex-col items-center group cursor-default"
+    whileHover={{ x: 5 }}
+    className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100"
   >
-    <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden mb-2">
-      <img src={imgUrl} alt={name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+    <div className="w-10 h-10 rounded-full bg-red-50 text-[#cc3333] flex items-center justify-center shrink-0">
+      {icon}
     </div>
-    <div className="text-center">
-      <h3 className="font-bold text-gray-900 text-[11px] md:text-xs group-hover:text-[#d32f2f] transition-colors">{name}</h3>
-      <p className="text-[9px] md:text-[10px] text-gray-500">{role}</p>
+    <div className="flex flex-col">
+      <h4 className="font-bold text-gray-900 text-sm mb-1">{title}</h4>
+      <p className="text-xs text-gray-600 leading-relaxed">{desc}</p>
     </div>
   </motion.div>
 );
@@ -26,66 +27,84 @@ export const Tentang: React.FC = () => {
       id="tentang" 
       className="w-full relative bg-white overflow-hidden py-20 md:py-32 px-6 md:px-16"
     >
-      
-      {/* Decorative corner watermarks */}
-      <svg className="absolute top-0 left-0 w-32 h-32 opacity-10 pointer-events-none" viewBox="0 0 100 100" fill="none">
-        <path d="M0,0 L100,0 C70,40 50,80 0,100 Z" fill="#e32636"/>
-      </svg>
-      <svg className="absolute top-0 right-0 w-48 h-48 opacity-10 pointer-events-none transform rotate-90" viewBox="0 0 100 100" fill="none">
-        <path d="M0,0 L100,0 C70,40 50,80 0,100 Z" fill="#e32636"/>
-        <path d="M0,20 L80,20 C50,60 30,100 0,120 Z" fill="#f2f2f2"/>
-      </svg>
-
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 relative z-10 items-center">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 relative z-10">
         
-        {/* Left: Text Content */}
-        <div className="w-full md:w-1/2 space-y-4">
-          <motion.h2 
+        {/* Left: Latar Belakang */}
+        <div className="w-full lg:w-1/2 flex flex-col justify-center">
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-2xl md:text-[28px] font-black text-gray-900 mb-6"
+            className="inline-block px-4 py-1.5 rounded-full bg-red-50 text-[#cc3333] font-bold text-[11px] uppercase tracking-wider mb-6 w-fit"
           >
-            Tentang Acara
-          </motion.h2>
-          <motion.p 
+            Latar Belakang
+          </motion.div>
+          
+          <motion.h2 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-gray-700 text-xs md:text-[13px] leading-relaxed font-medium"
+            className="text-3xl md:text-4xl font-black text-gray-900 mb-6 leading-tight"
           >
-            Guyub Rukun Warga bersama seperwakilan warga RT 10 mengadakan serangkaian kegiatan dalam rangka memeriahkan dan menyemarakkan semarak kemerdekaan RI ke-81.
-          </motion.p>
-          <motion.p 
+            Peran Pemuda dalam<br/>Membangun Bangsa
+          </motion.h2>
+          
+          <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="text-gray-700 text-xs md:text-[13px] leading-relaxed font-medium"
+            className="space-y-4 text-gray-600 text-sm md:text-[15px] leading-relaxed"
           >
-            Guyub Rukun Warga bersama rayakan kemerdekaan ke-81, memupuk erat rukun bertetangga dalam kebhinekaan di atas relung bangsa, memupuk erat kebersamaan dan mengamalkan konsep gotong royong yang mengayomi seluruh elemen warga.
-          </motion.p>
+            <p>
+              Peranan pemuda dalam mengimplementasikan pembangunan bangsa mempunyai andil yang sangat besar. Di tengah derasnya arus globalisasi, masyarakat dituntut untuk menyiapkan pemuda-pemudi yang siap dalam segala hal, baik di tingkat lokal, regional, maupun nasional.
+            </p>
+            <p>
+              Pemuda warga RT 010/011 khususnya, dituntut untuk mampu mempresentasikan ide atau gagasan yang kreatif dan inovatif agar ideal menjawab tantangan zaman. Jiwa nasionalisme dan kepribadian yang cinta tanah air sangat dibutuhkan.
+            </p>
+            <p className="font-semibold text-gray-800">
+              Kegiatan ini diarahkan untuk memperingati HUT RI ke-81 demi terciptanya lingkungan dengan semangat baru, keharmonisan, dan kerukunan antar tetangga.
+            </p>
+          </motion.div>
         </div>
 
-        {/* Right: Grid of Profiles */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, type: "spring" }}
-          className="w-full md:w-1/2 flex justify-center md:justify-end"
-        >
-          <div className="grid grid-cols-3 gap-3 md:gap-4">
-            <ProfileCard name="Pak Budi" role="Ketua" imgUrl="https://i.pravatar.cc/150?u=11" />
-            <ProfileCard name="Ibu Sari" role="Sekretaris" imgUrl="https://i.pravatar.cc/150?u=22" />
-            <ProfileCard name="Mas Danu" role="Bendahara" imgUrl="https://i.pravatar.cc/150?u=33" />
-            <ProfileCard name="Nama Sari" role="Humas" imgUrl="https://i.pravatar.cc/150?u=44" />
-            <ProfileCard name="Mas Canu" role="Logistik" imgUrl="https://i.pravatar.cc/150?u=55" />
-            <ProfileCard name="Mas Canu" role="Publikasi" imgUrl="https://i.pravatar.cc/150?u=66" />
-          </div>
-        </motion.div>
+        {/* Right: Maksud dan Tujuan */}
+        <div className="w-full lg:w-1/2">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+          >
+            <h3 className="text-xl font-black text-gray-900 mb-6">Maksud & Tujuan</h3>
+            
+            <div className="flex flex-col gap-2">
+              <TujuanItem 
+                title="Silaturahmi Warga" 
+                desc="Mempererat tali silaturahmi antar sesama warga lingkungan RT 010 RW 011." 
+                icon={<Users size={20} />} 
+              />
+              <TujuanItem 
+                title="Semangat Nasionalisme" 
+                desc="Meningkatkan semangat Nasionalisme di kalangan pemuda dan warga." 
+                icon={<Target size={20} />} 
+              />
+              <TujuanItem 
+                title="Jiwa Sportivitas" 
+                desc="Memupuk jiwa sportivitas dalam berbagai kegiatan perlombaan antar warga." 
+                icon={<Medal size={20} />} 
+              />
+              <TujuanItem 
+                title="Mengenang Pahlawan" 
+                desc="Mengenang jasa para pahlawan yang telah berkorban demi bangsa, serta mendorong rasa bangga dan cinta tanah air." 
+                icon={<Heart size={20} />} 
+              />
+            </div>
+          </motion.div>
+        </div>
 
       </div>
     </motion.section>

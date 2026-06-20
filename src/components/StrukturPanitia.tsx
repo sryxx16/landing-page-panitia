@@ -1,32 +1,43 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Wrench, Mic, Package, Camera } from 'lucide-react';
+import { Users, UserCheck, Mic, CalendarHeart, Utensils, Camera, HardHat, ShieldCheck } from 'lucide-react';
 
-const CardTop: React.FC<{ role: string; name: string; imgUrl: string }> = ({ role, name, imgUrl }) => (
+const IntiCard: React.FC<{ role: string; names: string[] }> = ({ role, names }) => (
   <motion.div 
-    whileHover={{ scale: 1.05, y: -5 }}
-    className="bg-white/90 backdrop-blur-sm rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 flex items-center p-2 pr-6 w-auto relative z-10 cursor-default"
+    whileHover={{ y: -5 }}
+    className="bg-white p-5 rounded-2xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col items-center text-center"
   >
-    <div className="w-10 h-10 rounded-full overflow-hidden mr-3 shrink-0 border border-gray-100">
-      <img src={imgUrl} alt={name} className="w-full h-full object-cover" />
+    <div className="text-[#cc3333] mb-2">
+      <UserCheck size={24} />
     </div>
-    <div className="flex flex-col text-left">
-      <span className="font-extrabold text-gray-900 text-xs">{role}</span>
-      <span className="text-[10px] text-gray-500">{name}</span>
+    <h4 className="font-black text-gray-900 text-sm mb-3 uppercase tracking-wider">{role}</h4>
+    <div className="flex flex-col gap-1 w-full">
+      {names.map((name, i) => (
+        <span key={i} className="text-[13px] font-bold text-gray-700 bg-gray-50 py-1.5 px-3 rounded-md">{name}</span>
+      ))}
     </div>
   </motion.div>
 );
 
-const CardDivisi: React.FC<{ role: string; subtext: string; icon: React.ReactNode }> = ({ role, subtext, icon }) => (
+const SeksiCard: React.FC<{ title: string; members: string[]; icon: React.ReactNode }> = ({ title, members, icon }) => (
   <motion.div 
-    whileHover={{ y: -10, scale: 1.05 }}
-    className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 flex flex-col items-center p-4 w-[110px] relative z-10 group cursor-default"
+    whileHover={{ y: -5 }}
+    className="bg-white p-5 rounded-2xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
   >
-    <div className="w-12 h-12 bg-red-50 rounded-full text-[#d32f2f] flex items-center justify-center mb-3 group-hover:bg-[#d32f2f] group-hover:text-white transition-colors duration-300">
-      {icon}
+    <div className="flex items-center gap-3 mb-4 border-b border-gray-50 pb-3">
+      <div className="w-10 h-10 rounded-full bg-red-50 text-[#cc3333] flex items-center justify-center shrink-0">
+        {icon}
+      </div>
+      <h4 className="font-black text-gray-900 text-sm uppercase">{title}</h4>
     </div>
-    <h3 className="font-bold text-gray-900 text-[11px] text-center group-hover:text-[#d32f2f] transition-colors">{role}</h3>
-    <p className="text-[8px] text-gray-400 mt-1">{subtext}</p>
+    <ul className="flex flex-col gap-2">
+      {members.map((member, idx) => (
+        <li key={idx} className="text-[13px] text-gray-600 flex items-center gap-2">
+          <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+          {member}
+        </li>
+      ))}
+    </ul>
   </motion.div>
 );
 
@@ -35,7 +46,7 @@ export const StrukturPanitia: React.FC = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
@@ -53,82 +64,129 @@ export const StrukturPanitia: React.FC = () => {
       id="struktur" 
       className="w-full bg-gray-50/50 overflow-hidden py-20 md:py-32 px-6 md:px-16 relative border-y border-gray-100"
     >
-      {/* Decorative corner watermarks */}
-      <svg className="absolute top-0 right-0 w-64 h-64 opacity-10 pointer-events-none transform rotate-180" viewBox="0 0 200 200" fill="none">
-        <path d="M0,0 L200,0 C150,50 100,100 0,100 Z" fill="#e32636"/>
-        <path d="M0,20 L180,20 C130,70 80,120 0,120 Z" fill="#e32636" opacity="0.3"/>
-      </svg>
-      <svg className="absolute bottom-20 left-0 w-48 h-48 opacity-10 pointer-events-none" viewBox="0 0 100 100" fill="none">
-        <path d="M0,0 L100,0 C70,40 50,80 0,100 Z" fill="#e32636"/>
-      </svg>
+      <div className="max-w-6xl mx-auto flex flex-col relative z-10">
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 rounded-full bg-red-50 text-[#cc3333] font-bold text-[11px] uppercase tracking-wider mb-4"
+          >
+            Susunan Kepanitiaan
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-4xl font-black text-gray-900"
+          >
+            Struktur Panitia HUT RI 81
+          </motion.h2>
+        </div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
-        <motion.h2 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="text-2xl font-black text-gray-900 mb-12 text-center md:text-left"
-        >
-          Struktur Kepanitiaan<br/><span className="text-xl font-bold">(Arsitektur Struktur)</span>
-        </motion.h2>
-
-        {/* Organization Chart */}
+        {/* Pelindung & Penasihat */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col items-center w-full mt-8"
+          viewport={{ once: true }}
+          className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm mb-12"
         >
-          {/* Level 1: Ketua */}
-          <motion.div variants={itemVariants} className="relative flex flex-col items-center">
-            <CardTop role="Ketua" name="Pak Budi" imgUrl="https://i.pravatar.cc/150?u=11" />
-            <motion.div initial={{ height: 0 }} whileInView={{ height: 32 }} transition={{ duration: 0.5, delay: 0.5 }} className="w-px bg-red-300"></motion.div>
-          </motion.div>
-
-          {/* Level 2: Sekretaris */}
-          <motion.div variants={itemVariants} className="relative flex flex-col items-center">
-            <CardTop role="Sekretaris" name="Ibu Sari" imgUrl="https://i.pravatar.cc/150?u=22" />
-            <motion.div initial={{ height: 0 }} whileInView={{ height: 48 }} transition={{ duration: 0.5, delay: 0.7 }} className="w-px bg-red-300"></motion.div>
-          </motion.div>
-
-          {/* Bendahara (Left & Right) */}
-          <div className="flex items-center justify-between w-full max-w-lg absolute top-[160px] pointer-events-none">
-            <motion.div variants={itemVariants} className="pointer-events-auto">
-              <CardTop role="Bendahara" name="Mas Danu" imgUrl="https://i.pravatar.cc/150?u=33" />
-            </motion.div>
-            <motion.div variants={itemVariants} className="pointer-events-auto">
-              <CardTop role="Bendahara" name="Mas Danu" imgUrl="https://i.pravatar.cc/150?u=44" />
-            </motion.div>
+          <div className="flex items-center gap-3 mb-6 justify-center">
+            <ShieldCheck className="text-[#cc3333]" />
+            <h3 className="text-lg font-black text-gray-900 uppercase">Pelindung & Penasihat</h3>
           </div>
-
-          {/* Level 3: Divisions */}
-          <motion.div variants={itemVariants} className="flex items-start justify-center gap-4 w-full max-w-2xl relative mt-4">
-            {/* Horizontal Line */}
-            <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.9 }} className="absolute -top-[16px] left-[12.5%] right-[12.5%] h-px bg-red-300 origin-center"></motion.div>
-            
-            <div className="flex-1 flex flex-col items-center relative">
-              <motion.div initial={{ height: 0 }} whileInView={{ height: 16 }} transition={{ duration: 0.3, delay: 1.2 }} className="w-px bg-red-300 absolute -top-[16px]"></motion.div>
-              <CardDivisi role="Perlengkapan" subtext="unit logo" icon={<Wrench size={20} />} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            <div>
+              <h4 className="text-xs font-bold text-gray-500 uppercase mb-2">Penasihat</h4>
+              <p className="text-[13px] font-bold text-gray-800">Bpk. Nimas Muslim<br/>Bpk. Muhidin<br/>Bpk. Aun Supritna</p>
             </div>
-            
-            <div className="flex-1 flex flex-col items-center relative">
-              <motion.div initial={{ height: 0 }} whileInView={{ height: 16 }} transition={{ duration: 0.3, delay: 1.3 }} className="w-px bg-red-300 absolute -top-[16px]"></motion.div>
-              <CardDivisi role="Humas" subtext="nusantara" icon={<Mic size={20} />} />
+            <div>
+              <h4 className="text-xs font-bold text-gray-500 uppercase mb-2">Pembina Pemuda</h4>
+              <p className="text-[13px] font-bold text-gray-800">Bpk. Jumadi Akbar, S.Pd.</p>
             </div>
-            
-            <div className="flex-1 flex flex-col items-center relative">
-              <motion.div initial={{ height: 0 }} whileInView={{ height: 16 }} transition={{ duration: 0.3, delay: 1.4 }} className="w-px bg-red-300 absolute -top-[16px]"></motion.div>
-              <CardDivisi role="Logistik" subtext="unit asu" icon={<Package size={20} />} />
+            <div>
+              <h4 className="text-xs font-bold text-gray-500 uppercase mb-2">Penanggung Jawab</h4>
+              <p className="text-[13px] font-bold text-gray-800">Bpk. KETUA RT 010/011<br/>Agung Budi Santoso</p>
             </div>
-            
-            <div className="flex-1 flex flex-col items-center relative">
-              <motion.div initial={{ height: 0 }} whileInView={{ height: 16 }} transition={{ duration: 0.3, delay: 1.5 }} className="w-px bg-red-300 absolute -top-[16px]"></motion.div>
-              <CardDivisi role="Publikasi" subtext="unit asu" icon={<Camera size={20} />} />
-            </div>
-          </motion.div>
-
+          </div>
         </motion.div>
+
+        {/* Pengurus Inti */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+        >
+          <motion.div variants={itemVariants}>
+            <IntiCard role="Ketua Pelaksana" names={["Ahmad Miftahudin (I)", "Haqi Fajriansyah (II)"]} />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <IntiCard role="Sekretaris" names={["Surya Daffa Fauzi (I)", "Dama Mahiza (II)"]} />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <IntiCard role="Bendahara" names={["Siti Chodijah (I)", "Rafly Miftahudin (II)"]} />
+          </motion.div>
+        </motion.div>
+
+        {/* Seksi-Seksi */}
+        <div className="text-center mb-8">
+          <h3 className="text-xl font-black text-gray-900 uppercase">Seksi - Seksi</h3>
+        </div>
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <motion.div variants={itemVariants}>
+            <SeksiCard 
+              title="Seksi Acara" 
+              icon={<CalendarHeart size={20} />}
+              members={["M. Fathir", "Dea Anisa", "Diah Rohmawati", "Nayla Agustina", "Aurel Cantika"]} 
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <SeksiCard 
+              title="Seksi Konsumsi" 
+              icon={<Utensils size={20} />}
+              members={["Nara Pasya", "Reisya Najwa", "Anisa Najwa", "Awal Rahman", "Aliya Nurhaliza", "Putri Wulandari", "Nur Khofifah"]} 
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <SeksiCard 
+              title="Seksi Humas" 
+              icon={<Mic size={20} />}
+              members={["M. Fahri Ak", "Ramadiaz"]} 
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <SeksiCard 
+              title="Seksi Perlengkapan" 
+              icon={<HardHat size={20} />}
+              members={["Aulana Sutisna", "Luthfi Wardana", "Afif Faisal", "Robbi", "Raffa", "Dera", "Lingga", "Naufal"]} 
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <SeksiCard 
+              title="Koordinator Lapangan" 
+              icon={<Users size={20} />}
+              members={["Rizky Ramadhan", "Ilham Habibi", "M. Yusni Mubarok", "Sukartini Dewi Anjani"]} 
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <SeksiCard 
+              title="Seksi Dokumentasi" 
+              icon={<Camera size={20} />}
+              members={["Aqila Ufairoh", "Putri Wulandari"]} 
+            />
+          </motion.div>
+        </motion.div>
+
       </div>
     </motion.section>
   );

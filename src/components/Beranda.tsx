@@ -92,7 +92,7 @@ export const Beranda: React.FC = () => {
             </div>
             <div className="flex flex-col text-left">
               <span className="text-[11px] text-gray-400 font-medium">Lokasi</span>
-              <span className="text-[13px] text-white font-bold">Lingkungan RT 10 Cibinong</span>
+              <span className="text-[13px] text-white font-bold">Jalan Utama RT010 / 011</span>
             </div>
           </div>
         </motion.div>
