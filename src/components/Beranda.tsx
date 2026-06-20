@@ -1,16 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Calendar, MapPin } from 'lucide-react';
 
 export const Beranda: React.FC = () => {
-  const containerVariants: import('framer-motion').Variants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1, 
-      transition: { staggerChildren: 0.2, delayChildren: 0.1 } 
-    }
-  };
-
-  const itemVariants: import('framer-motion').Variants = {
+  const itemVariants: any = {
     hidden: { y: 20, opacity: 0 },
     visible: { 
       y: 0, 
@@ -20,103 +13,91 @@ export const Beranda: React.FC = () => {
   };
 
   return (
-    <motion.div 
+    <motion.section 
+      id="beranda" 
       initial="hidden"
       animate="visible"
-      variants={containerVariants}
-      className="w-full flex flex-col gap-6 w-full"
+      transition={{ staggerChildren: 0.2, delayChildren: 0.1 }}
+      className="w-full min-h-screen relative overflow-hidden flex flex-col items-center pb-20 bg-gradient-to-br from-[#8b1515] via-[#4d1313] to-[#1c1818]"
     >
-      {/* Component 1: Navbar Pill (Glassmorphism) */}
-      <motion.nav 
-        variants={itemVariants}
-        className="w-full glass-nav rounded-full px-6 py-3 flex items-center justify-between shadow-sm sticky top-4 z-50 transition-all duration-300 hover:shadow-md"
-      >
+      {/* Transparent Navbar inside the Hero */}
+      <nav className="w-full px-6 md:px-16 py-6 flex items-center justify-between z-50 mb-10 md:mb-20">
         <div className="flex items-center gap-3">
-          {/* Flag Logo */}
-          <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 5C10 15 20 -5 40 5V15C20 5 10 25 0 15V5Z" fill="#E32636"/>
-            <path d="M0 15C10 25 20 5 40 15V25C20 15 10 35 0 25V15Z" fill="#F2F2F2"/>
-            <rect x="0" y="0" width="2" height="30" fill="#D9D9D9"/>
-          </svg>
-          <div className="flex flex-col leading-tight">
-            <span className="font-black text-gray-900 text-[15px]">HUT RI 81</span>
-            <span className="font-bold text-gray-900 text-[15px]">RT 05</span>
+          {/* Logo 81 */}
+          <div className="w-10 h-10 bg-[#cc3333] rounded-full flex items-center justify-center text-white font-black text-lg">
+            81
+          </div>
+          <div className="flex items-center gap-1.5 text-[17px] font-black uppercase tracking-wide">
+            <span className="text-white">HUT RI 81</span>
+            <span className="text-[#cc3333]">RT 10</span>
           </div>
         </div>
         
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-6 text-[13px] font-bold text-gray-700">
-          <a href="#beranda" className="text-[#cc3333]">Beranda</a>
-          <a href="#tentang" className="hover:text-[#cc3333] transition-colors hover:scale-105 transform">Tentang</a>
-          <a href="#struktur" className="hover:text-[#cc3333] transition-colors hover:scale-105 transform">Struktur</a>
-          <a href="#lomba" className="hover:text-[#cc3333] transition-colors hover:scale-105 transform">Lomba</a>
-          <a href="#jadwal" className="hover:text-[#cc3333] transition-colors hover:scale-105 transform">Jadwal</a>
-          <a href="#anggaran" className="hover:text-[#cc3333] transition-colors hover:scale-105 transform">Anggaran</a>
+        <div className="hidden md:flex items-center gap-8 text-[13px] font-bold text-gray-300">
+          <a href="#beranda" className="text-white">Beranda</a>
+          <a href="#tentang" className="hover:text-white transition-colors">Tentang</a>
+          <a href="#lomba" className="hover:text-white transition-colors">Lomba</a>
+          <a href="#jadwal" className="hover:text-white transition-colors">Jadwal</a>
+          <a href="#struktur" className="hover:text-white transition-colors">Panitia</a>
+          <a href="#anggaran" className="hover:text-white transition-colors">Anggaran</a>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Hero Section Card */}
-      <motion.section 
-        variants={itemVariants}
-        id="beranda" 
-        className="w-full relative bg-[#fbecec] rounded-[30px] overflow-hidden flex flex-col items-center justify-center pt-20 pb-20 card-hover"
-      >
-        {/* Decorative corner waves */}
-        <motion.svg 
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.9 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="absolute top-0 left-0 w-64 h-64 text-[#e32636]" viewBox="0 0 200 200" fill="none"
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-6xl px-6 flex flex-col items-center flex-1 justify-center">
+        
+        {/* Theme Text */}
+        <motion.h1 
+          variants={itemVariants}
+          className="text-4xl md:text-[64px] lg:text-[76px] font-black text-white text-center leading-[1.1] tracking-tight mb-8"
+          style={{ fontFamily: '"Impact", "Oswald", system-ui, sans-serif' }}
         >
-          <path d="M0,0 L200,0 C150,50 100,100 0,100 Z" fill="currentColor"/>
-          <path d="M0,20 L180,20 C130,70 80,120 0,120 Z" fill="#f2f2f2" opacity="0.9"/>
-          <path d="M0,40 L160,40 C110,90 60,140 0,140 Z" fill="#e32636"/>
-        </motion.svg>
-
-        <motion.svg 
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.9 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="absolute bottom-0 right-0 w-64 h-64 text-[#e32636] transform rotate-180" viewBox="0 0 200 200" fill="none"
+          AKAR PERJUANGAN DI TANAH LELUHUR<br/>
+          MERDEKA DI BAWAH LANGIT BIRU<br/>
+          BERPIJAK DI BUMI YANG HIJAU
+        </motion.h1>
+        
+        {/* Meaning Text */}
+        <motion.p 
+          variants={itemVariants}
+          className="text-sm md:text-base text-gray-300 font-normal leading-relaxed text-center max-w-3xl mb-16"
         >
-           <path d="M0,0 L200,0 C150,50 100,100 0,100 Z" fill="currentColor"/>
-           <path d="M0,20 L180,20 C130,70 80,120 0,120 Z" fill="#f2f2f2" opacity="0.9"/>
-           <path d="M0,40 L160,40 C110,90 60,140 0,140 Z" fill="#e32636"/>
-        </motion.svg>
+          Sebuah ajakan untuk membangun masa depan yang cerah, dengan tetap berpegang teguh pada nilai sejarah bangsa serta menjaga kelestarian bumi sebagai sumber kehidupan.
+        </motion.p>
 
-        {/* Content */}
-        <div className="relative z-10 text-center px-4">
-          <motion.h1 
-            variants={itemVariants}
-            className="text-4xl md:text-[54px] font-black text-[#cc3333] mb-4 leading-tight drop-shadow-sm"
-          >
-            SEMARAK<br/>KEMERDEKAAN<br/>RT 05
-          </motion.h1>
-          <motion.p 
-            variants={itemVariants}
-            className="text-[13px] md:text-sm text-gray-700 mb-8 font-medium"
-          >
-            Guyub Rukun Warga - Bersama Rayakan Kemerdekaan ke-81
-          </motion.p>
-          
-          <motion.button 
-            whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(204,51,51,0.2)" }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-[#cc3333] font-black px-8 py-3 rounded-full text-xs md:text-sm shadow-md transition-colors"
-          >
-            LIHAT JADWAL LOMBA
-          </motion.button>
-        </div>
-
+        {/* Info Boxes */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-4 text-[9px] text-gray-500 font-medium"
+          variants={itemVariants}
+          className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-8"
         >
-          © 2026 Panitia HUT RI 81 RT 05 Cibinong
+          {/* Tanggal */}
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white backdrop-blur-sm border border-white/5">
+              <Calendar size={20} />
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="text-[11px] text-gray-400 font-medium">Tanggal</span>
+              <span className="text-[13px] text-white font-bold">17 Agustus 2026</span>
+            </div>
+          </div>
+
+          {/* Vertical Separator */}
+          <div className="hidden md:block w-px h-10 bg-white/20"></div>
+
+          {/* Lokasi */}
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white backdrop-blur-sm border border-white/5">
+              <MapPin size={20} />
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="text-[11px] text-gray-400 font-medium">Lokasi</span>
+              <span className="text-[13px] text-white font-bold">Lingkungan RT 10 Cibinong</span>
+            </div>
+          </div>
         </motion.div>
-      </motion.section>
-    </motion.div>
+        
+      </div>
+    </motion.section>
   );
 };

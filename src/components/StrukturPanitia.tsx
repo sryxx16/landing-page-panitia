@@ -51,7 +51,7 @@ export const StrukturPanitia: React.FC = () => {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, type: "spring" }}
       id="struktur" 
-      className="w-full bg-white/90 backdrop-blur-xl rounded-[30px] overflow-hidden p-8 md:p-12 relative card-hover"
+      className="w-full bg-gray-50/50 overflow-hidden py-20 md:py-32 px-6 md:px-16 relative border-y border-gray-100"
     >
       {/* Decorative corner watermarks */}
       <svg className="absolute top-0 right-0 w-64 h-64 opacity-10 pointer-events-none transform rotate-180" viewBox="0 0 200 200" fill="none">

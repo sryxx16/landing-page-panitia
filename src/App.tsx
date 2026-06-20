@@ -9,7 +9,7 @@ import { Anggaran } from './components/Anggaran';
 
 const App: React.FC = () => {
   return (
-    <div className="w-full min-h-screen bg-[#7b8c98] font-sans text-gray-800 p-4 md:p-8 flex flex-col items-center gap-8 relative overflow-hidden">
+    <div className="w-full min-h-screen font-sans text-gray-800 flex flex-col relative overflow-hidden bg-white">
       
       {/* Animated Background Blobs */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
@@ -25,21 +25,14 @@ const App: React.FC = () => {
         />
       </div>
 
-      {/* Maximum width container for all cards */}
-      <div className="w-full max-w-6xl flex flex-col gap-8 relative z-10">
+      {/* Sections stack directly without gaps or paddings */}
+      <div className="w-full flex flex-col relative z-10">
         <Beranda />
         <Tentang />
         <StrukturPanitia />
         <Lomba />
-        
-        <div className="flex flex-col md:flex-row gap-8 items-stretch w-full">
-          <div className="w-full md:w-1/3">
-            <Jadwal />
-          </div>
-          <div className="w-full md:w-2/3">
-            <Anggaran />
-          </div>
-        </div>
+        <Jadwal />
+        <Anggaran />
       </div>
     </div>
   );

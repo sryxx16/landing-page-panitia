@@ -33,7 +33,7 @@ export const Anggaran: React.FC = () => {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, type: "spring" }}
       id="anggaran" 
-      className="w-full h-full bg-white/90 backdrop-blur-xl rounded-[30px] overflow-hidden shadow-sm p-8 flex flex-col card-hover"
+      className="w-full h-full bg-white overflow-hidden py-20 md:py-32 px-6 md:px-16 flex flex-col items-center"
     >
       <motion.h2 
         initial={{ opacity: 0, scale: 0.9 }}
@@ -44,7 +44,7 @@ export const Anggaran: React.FC = () => {
         Transparansi Anggaran
       </motion.h2>
       
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-[0_2px_15px_rgba(0,0,0,0.04)] border border-gray-100 p-4 md:p-6 flex-1">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-[0_2px_15px_rgba(0,0,0,0.04)] border border-gray-100 p-4 md:p-6 flex-1 w-full max-w-4xl">
         <h3 className="font-bold text-gray-800 text-sm mb-4">Transparansi Anggaran</h3>
         
         {/* Header */}

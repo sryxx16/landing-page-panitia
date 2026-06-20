@@ -38,7 +38,7 @@ export const Lomba: React.FC = () => {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, type: "spring" }}
       id="lomba" 
-      className="w-full bg-white/90 backdrop-blur-xl rounded-[30px] overflow-hidden shadow-sm p-8 md:p-12 relative card-hover"
+      className="w-full bg-white overflow-hidden py-20 md:py-32 px-6 md:px-16 relative"
     >
       {/* Decorative corner watermarks */}
       <svg className="absolute top-0 right-0 w-48 h-48 opacity-10 pointer-events-none transform rotate-180" viewBox="0 0 100 100" fill="none">

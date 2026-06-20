@@ -55,7 +55,7 @@ export const Jadwal: React.FC = () => {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, type: "spring" }}
       id="jadwal" 
-      className="w-full h-full bg-white/90 backdrop-blur-xl rounded-[30px] overflow-hidden shadow-sm p-8 flex flex-col items-center card-hover relative"
+      className="w-full h-full bg-gray-50/50 overflow-hidden py-20 md:py-32 flex flex-col items-center relative border-y border-gray-100 px-6"
     >
       <motion.h2 
         initial={{ opacity: 0, scale: 0.9 }}
@@ -66,7 +66,7 @@ export const Jadwal: React.FC = () => {
         Jadwal
       </motion.h2>
       
-      <div className="relative w-full max-w-xs flex-1 flex flex-col justify-center">
+      <div className="relative w-full max-w-md flex-1 flex flex-col justify-center">
         {/* Vertical Center Line */}
         <motion.div 
           initial={{ scaleY: 0 }}

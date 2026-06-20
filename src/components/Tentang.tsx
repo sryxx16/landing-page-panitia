@@ -24,7 +24,7 @@ export const Tentang: React.FC = () => {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, type: "spring" }}
       id="tentang" 
-      className="w-full relative bg-white/90 backdrop-blur-xl rounded-[30px] overflow-hidden p-8 md:p-12 card-hover"
+      className="w-full relative bg-white overflow-hidden py-20 md:py-32 px-6 md:px-16"
     >
       
       {/* Decorative corner watermarks */}
@@ -56,7 +56,7 @@ export const Tentang: React.FC = () => {
             transition={{ delay: 0.3 }}
             className="text-gray-700 text-xs md:text-[13px] leading-relaxed font-medium"
           >
-            Guyub Rukun Warga bersama seperwakilan warga RT 05 mengadakan serangkaian kegiatan dalam rangka memeriahkan dan menyemarakkan semarak kemerdekaan RI ke-81.
+            Guyub Rukun Warga bersama seperwakilan warga RT 10 mengadakan serangkaian kegiatan dalam rangka memeriahkan dan menyemarakkan semarak kemerdekaan RI ke-81.
           </motion.p>
           <motion.p 
             initial={{ opacity: 0, x: -20 }}
