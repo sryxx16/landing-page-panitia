@@ -45,10 +45,11 @@ const panitiaGroups = [
 
 export const GaleriPanitia: React.FC = () => {
   const [selectedGroup, setSelectedGroup] = useState<typeof panitiaGroups[0] | null>(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<typeof panitiaGroups[0]['photos'][0] | null>(null);
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
-    if (selectedGroup) {
+    if (selectedGroup || selectedPhoto) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -146,7 +147,8 @@ export const GaleriPanitia: React.FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100"
+                        className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 cursor-pointer"
+                        onClick={() => setSelectedPhoto(photo)}
                       >
                         <img 
                           src={photo.url} 
@@ -164,6 +166,49 @@ export const GaleriPanitia: React.FC = () => {
                     ))}
                   </div>
                 </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+
+      {/* Fullscreen Single Photo Modal */}
+      {createPortal(
+        <AnimatePresence>
+          {selectedPhoto && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedPhoto(null)}
+              className="fixed inset-0 z-[10000] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-4 sm:p-8"
+            >
+              <button
+                onClick={() => setSelectedPhoto(null)}
+                className="absolute top-6 right-6 md:top-8 md:right-8 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors z-50"
+              >
+                <X size={24} />
+              </button>
+              
+              <motion.img
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                src={selectedPhoto.url}
+                alt={selectedPhoto.caption}
+                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              />
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="mt-6 text-center"
+              >
+                <p className="text-white text-lg font-medium tracking-wide">{selectedPhoto.caption}</p>
               </motion.div>
             </motion.div>
           )}
