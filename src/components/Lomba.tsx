@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Baby, Users, Target, UsersRound } from 'lucide-react';
 
 const CategoryCard: React.FC<{ title: string; items: string[]; icon: React.ReactNode; color: string }> = ({ title, items, icon, color }) => (
-  <motion.div 
+  <motion.div
     whileHover={{ y: -5 }}
     className="bg-white p-6 rounded-2xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] h-full flex flex-col"
   >
@@ -37,14 +37,24 @@ export const Lomba: React.FC = () => {
   };
 
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, type: "spring" }}
-      id="lomba" 
+      id="lomba"
       className="w-full bg-white overflow-hidden py-20 md:py-32 px-6 md:px-16 relative"
     >
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0 bg-gray-50 pointer-events-none" />
+      <div
+        className="absolute inset-0 z-0 opacity-15 mix-blend-multiply bg-center bg-cover bg-fixed pointer-events-none"
+        style={{
+          backgroundImage: "url('/navbar&background/bg_lomba.png')",
+          filter: "grayscale(100%) contrast(120%)"
+        }}
+      />
+
       <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -54,8 +64,8 @@ export const Lomba: React.FC = () => {
         >
           Kategori Lomba
         </motion.div>
-        
-        <motion.h2 
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -64,8 +74,8 @@ export const Lomba: React.FC = () => {
         >
           Daftar Perlombaan
         </motion.h2>
-        
-        <motion.div 
+
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -73,36 +83,36 @@ export const Lomba: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full"
         >
           <motion.div variants={itemVariants} className="h-full">
-            <CategoryCard 
-              title="Balita" 
-              icon={<Baby size={24} />} 
+            <CategoryCard
+              title="Balita"
+              icon={<Baby size={24} />}
               color="bg-pink-500"
               items={["Memasukkan Pensil ke dalam botol", "Ambil Bendera"]}
             />
           </motion.div>
 
           <motion.div variants={itemVariants} className="h-full">
-            <CategoryCard 
-              title="Anak - Anak" 
-              icon={<Target size={24} />} 
+            <CategoryCard
+              title="Anak - Anak"
+              icon={<Target size={24} />}
               color="bg-blue-500"
               items={["Memasukkan pensil ke dalam botol", "Makan Biskuit", "Kemeja Balon", "Air Kerucut", "Besek Gantung"]}
             />
           </motion.div>
 
           <motion.div variants={itemVariants} className="h-full">
-            <CategoryCard 
-              title="Dewasa" 
-              icon={<Users size={24} />} 
+            <CategoryCard
+              title="Dewasa"
+              icon={<Users size={24} />}
               color="bg-orange-500"
               items={["Air Kerucut", "Sarung Balon", "Bola Tuing-Tuing"]}
             />
           </motion.div>
 
           <motion.div variants={itemVariants} className="h-full">
-            <CategoryCard 
-              title="Lomba Grup" 
-              icon={<UsersRound size={24} />} 
+            <CategoryCard
+              title="Lomba Grup"
+              icon={<UsersRound size={24} />}
               color="bg-emerald-500"
               items={["Estafet Pukul Paku", "Estafet Sarung", "Estafet Air"]}
             />

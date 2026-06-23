@@ -5,37 +5,46 @@ import { Calendar, MapPin } from 'lucide-react';
 export const Beranda: React.FC = () => {
   const itemVariants: any = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
       transition: { type: "spring", stiffness: 100, damping: 12 }
     }
   };
 
   return (
-    <motion.section 
-      id="beranda" 
+    <motion.section
+      id="beranda"
       initial="hidden"
       animate="visible"
       transition={{ staggerChildren: 0.2, delayChildren: 0.1 }}
       className="w-full min-h-screen relative overflow-hidden flex flex-col items-center pb-20 bg-gradient-to-br from-[#8b1515] via-[#4d1313] to-[#1c1818]"
     >
+      {/* Background Silhouette */}
+      <div
+        className="absolute inset-0 z-0 opacity-40 pointer-events-none mix-blend-luminosity bg-center bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: "url('/navbar&background/fotoramean_BG.png')",
+          filter: "grayscale(100%) contrast(120%) brightness(80%)"
+        }}
+      />
+
       {/* Content */}
       <div className="relative z-10 w-full max-w-6xl px-6 flex flex-col items-center flex-1 justify-center mt-20">
-        
+
         {/* Theme Text */}
-        <motion.h1 
+        <motion.h1
           variants={itemVariants}
           className="text-4xl md:text-[64px] lg:text-[76px] font-black text-white text-center leading-[1.1] tracking-tight mb-8"
           style={{ fontFamily: '"Impact", "Oswald", system-ui, sans-serif' }}
         >
-          AKAR PERJUANGAN DI TANAH LELUHUR<br/>
-          MERDEKA DI BAWAH LANGIT BIRU<br/>
+          AKAR PERJUANGAN DI TANAH LELUHUR<br />
+          MERDEKA DI BAWAH LANGIT BIRU<br />
           BERPIJAK DI BUMI YANG HIJAU
         </motion.h1>
-        
+
         {/* Meaning Text */}
-        <motion.p 
+        <motion.p
           variants={itemVariants}
           className="text-sm md:text-base text-gray-300 font-normal leading-relaxed text-center max-w-3xl mb-16"
         >
@@ -43,7 +52,7 @@ export const Beranda: React.FC = () => {
         </motion.p>
 
         {/* Info Boxes */}
-        <motion.div 
+        <motion.div
           variants={itemVariants}
           className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-8"
         >
@@ -72,16 +81,16 @@ export const Beranda: React.FC = () => {
             </div>
           </div>
         </motion.div>
-        
+
         {/* Call to Action Buttons */}
-        <motion.div 
+        <motion.div
           variants={itemVariants}
           className="flex flex-col md:flex-row items-center gap-4 mt-8"
         >
           {/* WhatsApp Button */}
-          <a 
-            href="https://wa.me/6285781278856?text=Halo%20panitia%20HUT%20RI%2081%20RT%2010,%20saya%20tertarik%20menjadi%20sponsor." 
-            target="_blank" 
+          <a
+            href="https://wa.me/6285781278856?text=Halo%20panitia%20HUT%20RI%2081%20RT%2010,%20saya%20tertarik%20menjadi%20sponsor."
+            target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-white text-[#cc3333] font-black px-8 py-3.5 rounded-full text-[13px] md:text-sm shadow-[0_8px_25px_rgba(255,255,255,0.1)] hover:scale-105 transition-transform"
           >
@@ -93,7 +102,7 @@ export const Beranda: React.FC = () => {
           </a>
 
           {/* Jadwal Button */}
-          <a 
+          <a
             href="#jadwal"
             className="flex items-center gap-2 bg-transparent text-white font-bold px-8 py-3.5 rounded-full text-[13px] md:text-sm border border-white/30 hover:bg-white/10 transition-colors"
           >
