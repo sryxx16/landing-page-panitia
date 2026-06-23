@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Users, Heart, Medal } from 'lucide-react';
+import { GaleriPanitia } from './GaleriPanitia';
 
 const TujuanItem: React.FC<{ title: string; desc: string; icon: React.ReactNode }> = ({ title, desc, icon }) => (
   <motion.div 
@@ -106,6 +107,9 @@ export const Tentang: React.FC = () => {
           </motion.div>
         </div>
 
+      </div>
+      <div className="max-w-6xl mx-auto relative z-10">
+        <GaleriPanitia />
       </div>
     </motion.section>
   );
